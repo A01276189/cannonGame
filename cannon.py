@@ -23,8 +23,9 @@ def tap(x, y):
     if not inside(ball):
         ball.x = -199
         ball.y = -199
-        speed.x = (x + 200) / 25
-        speed.y = (y + 200) / 25
+        """Cambio de velocidad de proyectil"""
+        speed.x = (x + 200) / 13
+        speed.y = (y + 200) / 13
 
 
 def inside(xy):
@@ -55,7 +56,8 @@ def move():
         targets.append(target)
 
     for target in targets:
-        target.x -= 0.5
+        """Cambio de velocidad balones"""
+        target.x -= 3.5 
 
     if inside(ball):
         speed.y -= 0.35
@@ -72,7 +74,11 @@ def move():
 
     for target in targets:
         if not inside(target):
-            return
+                if randrange(40) == 0:
+                 y = randrange(-150, 150)
+                 target = vector(200, y)
+                 targets.append(target)
+        return
 
     ontimer(move, 50)
 
