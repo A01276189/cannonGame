@@ -29,7 +29,7 @@ def tap(x, y):
 
 def inside(xy):
     """Return True if xy within screen."""
-    return -200 < xy.x < 200 and -200 < xy.y < 200
+    return -200 < xy.x < 200 and -200 < xy.y < 200 
 
 
 def draw():
@@ -71,7 +71,9 @@ def move():
     draw()
 
     for target in targets:
-        if not inside(target):
+        """Para hacer que el juego nunca termine se agrega otra condición al if, en este caso
+        nunca termina porque nunca puede estar afuera y adentro al mismo tiempo"""
+        if not inside(target) and inside(target):
             return
 
     ontimer(move, 50)
